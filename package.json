@@ -1,0 +1,38 @@
+{
+  "name": "babel-plugin-transform-phonetize",
+  "description": "babel plugin to rename identifiers in a file to randomly generated pronounceable names",
+  "version": "0.0.0",
+  "author": "Renée Kooi <renee@kooi.me>",
+  "bugs": {
+    "url": "https://github.com/goto-bus-stop/babel-plugin-transform-phonetize/issues"
+  },
+  "devDependencies": {
+    "standard": "^11.0.0"
+  },
+  "homepage": "https://github.com/goto-bus-stop/babel-plugin-transform-phonetize",
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "beautify",
+    "identifiers",
+    "minify",
+    "phonetic",
+    "rename",
+    "transform",
+    "uglify",
+    "unminify"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goto-bus-stop/babel-plugin-transform-phonetize.git"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "dependencies": {
+    "defined": "^1.0.0",
+    "phonetic": "^0.1.1"
+  }
+}
