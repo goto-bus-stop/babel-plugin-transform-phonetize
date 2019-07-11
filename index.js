@@ -9,8 +9,13 @@ module.exports = function (b, opts) {
 
   return {
     visitor: {
-      Program: function () {
-        this.names = new NameGenerator(this.file.opts.filename)
+      Program: {
+        enter: function () {
+          this.names = new NameGenerator(this.file.opts.filename)
+        },
+        exit: function () {
+          this.names.close()
+        }
       },
       ReferencedIdentifier: function (path) {
         if (path.node.name.length > maxLength) {
@@ -28,7 +33,7 @@ module.exports = function (b, opts) {
           return
         }
 
-        path.scope.rename(path.node.name, this.names.next())
+        path.scope.rename(path.node.name, this.names.nextName())
         binding[kRenamed] = true
       }
     }
@@ -37,12 +42,26 @@ module.exports = function (b, opts) {
 
 function NameGenerator (seed) {
   this.last = seed || null
+  this.used = new Set()
+  this.length = 2
 }
-NameGenerator.prototype.next = function next () {
-  this.last = phonetic.generate({
+NameGenerator.prototype.nextName = function nextName () {
+  var word = phonetic.generate({
     capFirst: false,
-    syllables: 2,
+    syllables: this.length,
     seed: this.last
   })
+
+  if (this.used.has(word)) {
+    this.length++
+    return this.nextName()
+  }
+
+  this.used.add(word)
+
+  this.last = word
   return this.last
+}
+NameGenerator.prototype.close = function close () {
+  this.used.clear()
 }
