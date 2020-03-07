@@ -7,7 +7,7 @@
     "url": "https://github.com/goto-bus-stop/babel-plugin-transform-phonetize/issues"
   },
   "devDependencies": {
-    "standard": "^13.0.0"
+    "standard": "^14.3.1"
   },
   "homepage": "https://github.com/goto-bus-stop/babel-plugin-transform-phonetize",
   "keywords": [
