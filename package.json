@@ -29,7 +29,9 @@
     "url": "https://github.com/goto-bus-stop/babel-plugin-transform-phonetize.git"
   },
   "scripts": {
-    "test": "standard"
+    "tests-only": "true",
+    "lint": "standard",
+    "test": "npm run tests-only && npm run lint"
   },
   "dependencies": {
     "defined": "^1.0.0",
